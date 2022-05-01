@@ -1,0 +1,8 @@
+
+% Form the Laplacian
+e = ones(N,1); % Vector of ones to use across the diagonals
+Lap= spdiags([e -2*e e], -1:1, N, N); % Diagonal Laplacian
+Lap(1,1) = -1; Lap(N,N) = -1; % Neumann boundary conditions
+Lap = Lap./dx^2; % Scale the finite-difference operator
+
+FH_PDE = @(t, U)[f()] % The right-hand-side of our discretized ODE system
