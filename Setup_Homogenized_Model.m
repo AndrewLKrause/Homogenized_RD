@@ -1,7 +1,8 @@
 % Homogenized kinetics & Diffusion
 fH = @(u,v)theta*f1(u,v)+(1-theta)*f2(u,v);
 gH = @(u,v)theta*g1(u,v)+(1-theta)*g2(u,v);
-DH = 1/(theta/D1+(1-theta)/D2+2/eta);
+DHu = 1/(theta/D1u+(1-theta)/D2u+2/eta);
+DHv = 1/(theta/D1v+(1-theta)/D2v+2/eta);
 
 % Form the Laplacian
 e = ones(N,1); % Vector of ones to use across the diagonals

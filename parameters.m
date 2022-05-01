@@ -1,25 +1,29 @@
 % Geometric Parameters
 theta = 0.5; % Ratio of patch lengths
-Pn = 1; % Number of patches of each kind (so 2*Pn total patches)
+Pn = 2; % Number of patches of each kind (so 2*Pn total patches)
 eta = 1e9; % Coupling constant between patches
-L = 60; % Length of macroscale domain
+L = 100; % Length of macroscale domain
 pL = L/(2*Pn); % Length of individual patch
 
 % Mesh size parameters
-N = 1000; % Total number of grid points to use
+N = 20000; % Total number of grid points to use - MUST be divisible by 2*Pn!
+NPn = N/(2*Pn); % Number of grid points within a patch
 dx = L/(N-1); % Spacing between grid points
 
-% Time scale for simulation
+% Time/space scale for simulation
 T = 3000; 
-tspan = linspace(0,T,1e2); % Interpolate solution on [0,T] with 1e2 points
+tspan = linspace(0,T,1e3); % Interpolate solution on [0,T] with 1e2 points
+x = linspace(0,L,N);
 
 % Kinetic/ratio of diffusion parameters
 a1 = 0.01;
 a2 = 0.1;
-b1 = .9;
+b1 = 1.2;
 b2 = 9;
-D1 = 100;
-D2 = 500;
+D1u = 1;
+D2u = 1;
+D1v = 1500;
+D2v = 1500;
 
 % Kinetics
 f1 = @(u,v)a1-u+u.^2.*v;
